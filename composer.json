@@ -14,11 +14,16 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "AlDeeb\\FastBi\\": "src/"
+      "Aldeebhasan\\FastBi\\": "src/"
     },
     "files": [
-      "utilities/helpers.php"
+      "src/Utilities/helpers.php"
     ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Aldeebhasan\\FastBi\\Test\\": "tests/"
+    }
   },
   "authors": [
     {
