@@ -5,9 +5,9 @@ namespace Aldeebhasan\FastBi\Models\Metrics;
 class AvgMetric extends BaseMetric
 {
 
-    public function resolve()
+    public function measure($data)
     {
-        return array_sum($this->data) / count($this->data) ?? null;
+        return array_sum($data) / count($data) ?? null;
     }
 
 }

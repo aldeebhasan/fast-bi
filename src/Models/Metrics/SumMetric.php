@@ -5,9 +5,9 @@ namespace Aldeebhasan\FastBi\Models\Metrics;
 class SumMetric extends BaseMetric
 {
 
-    public function resolve()
+    public function measure($data)
     {
-        return array_sum($this->data);
+        return array_sum($data);
     }
 
 }

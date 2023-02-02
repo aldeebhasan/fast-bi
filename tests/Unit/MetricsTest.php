@@ -13,42 +13,50 @@ class MetricsTest extends TestCase
     function testSumMetric()
     {
         $metric = Metrics::sum('name', $this->data);
-        $result = $metric->resolve();
+        $result = $metric->build()->getData();
         self::assertEquals($result, 55);
     }
 
     function testMedianMetric()
     {
         $metric = Metrics::median('name', $this->data);
-        $result = $metric->resolve();
+        $result = $metric->build()->getData();
         self::assertEquals($result, 5);
     }
 
     function testMinMetric()
     {
         $metric = Metrics::min('name', $this->data);
-        $result = $metric->resolve();
+        $result = $metric->build()->getData();
         self::assertEquals($result, 1);
     }
 
     function testMaxMetric()
     {
         $metric = Metrics::max('name', $this->data);
-        $result = $metric->resolve();
+        $result = $metric->build()->getData();
         self::assertEquals($result, 10);
     }
 
     function testAvgMetric()
     {
         $metric = Metrics::avg('name', $this->data);
-        $result = $metric->resolve();
+        $result = $metric->build()->getData();
         self::assertEquals($result, 5.5);
     }
 
     function testnotExistMetric()
     {
         $metric = Metrics::notFound('name', $this->data);
-        $result = $metric->resolve();
+        $result = $metric->build()->getData();
         self::assertEquals($result, $this->data);
     }
+
+    function testCustomMetric()
+    {
+        $metric = Metrics::count('name', $this->data)->setMeasure(fn($data) => count($data));
+        $result = $metric->build()->getData();
+        self::assertEquals($result, count($this->data));
+    }
+
 }

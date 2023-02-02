@@ -5,9 +5,9 @@ namespace Aldeebhasan\FastBi\Models\Metrics;
 class MinMetric extends BaseMetric
 {
 
-    public function resolve()
+    public function measure($data)
     {
-        return min($this->data);
+        return min($data);
     }
 
 }

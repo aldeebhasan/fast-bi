@@ -5,9 +5,9 @@ namespace Aldeebhasan\FastBi\Models\Metrics;
 class MaxMetric extends BaseMetric
 {
 
-    public function resolve()
+    public function measure($data)
     {
-        return max($this->data);
+        return max($data);
     }
 
 }
