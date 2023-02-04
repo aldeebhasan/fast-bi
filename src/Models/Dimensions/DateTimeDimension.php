@@ -1,12 +1,9 @@
 <?php
 
 
-namespace Aldeebhasan\FastBi\Models\Dimension;
+namespace Aldeebhasan\FastBi\Models\Dimensions;
 
-use Aldeebhasan\FastBi\Inerfaces\IUDimension;
-use function Couchbase\defaultDecoder;
-
-class DateDimension extends BaseDimension
+class DateTimeDimension extends BaseDimension
 {
 
     private $format = 'Y/m/d';

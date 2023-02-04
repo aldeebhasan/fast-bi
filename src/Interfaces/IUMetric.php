@@ -1,6 +1,6 @@
 <?php
 
-namespace Aldeebhasan\FastBi\Inerfaces;
+namespace Aldeebhasan\FastBi\Interfaces;
 
 interface IUMetric
 {
@@ -8,5 +8,5 @@ interface IUMetric
 
     public function getData();
 
-    public function build();
+    public function build(): IUMetric;
 }

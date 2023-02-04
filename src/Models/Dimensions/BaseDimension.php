@@ -1,8 +1,8 @@
 <?php
 
-namespace Aldeebhasan\FastBi\Models\Dimension;
+namespace Aldeebhasan\FastBi\Models\Dimensions;
 
-use Aldeebhasan\FastBi\Inerfaces\IUDimension;
+use Aldeebhasan\FastBi\Interfaces\IUDimension;
 
 class BaseDimension implements IUDimension
 {
@@ -22,23 +22,22 @@ class BaseDimension implements IUDimension
         $this->processedData = $data;
     }
 
-    /**
-     * @param callable $transformer
-     */
-    public function setTransformer(callable $transformer): void
+
+    public function setTransformer(callable $transformer): self
     {
         $this->transformer = $transformer;
+        return $this;
     }
 
     public function transform($data)
     {
         if ($this->transformer && is_callable($this->transformer)) {
-            $data = array_map(fn($item) => call_user_func($this->transformer, $item), $data);
+            $data = call_user_func($this->transformer, $data);
         }
         return $data;
     }
 
-    protected function process()
+    protected function process(): self
     {
         $this->processedData = $this->transform($this->data);
         return $this;
@@ -50,7 +49,7 @@ class BaseDimension implements IUDimension
     }
 
 
-    public function build()
+    public function build(): self
     {
         return $this->process();
     }

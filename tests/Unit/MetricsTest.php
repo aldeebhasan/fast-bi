@@ -54,8 +54,8 @@ class MetricsTest extends TestCase
 
     function testCustomMetric()
     {
-        $metric = Metrics::count('name', $this->data)->setMeasure(fn($data) => count($data));
-        $result = $metric->build()->getData();
+        $metric = Metrics::raw('name', $this->data)->setMeasure(fn($data) => count($data))->build();
+        $result = $metric->getData();
         self::assertEquals($result, count($this->data));
     }
 

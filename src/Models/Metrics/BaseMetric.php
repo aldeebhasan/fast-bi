@@ -2,7 +2,7 @@
 
 namespace Aldeebhasan\FastBi\Models\Metrics;
 
-use Aldeebhasan\FastBi\Inerfaces\IUMetric;
+use Aldeebhasan\FastBi\Interfaces\IUMetric;
 
 class BaseMetric implements IUMetric
 {
@@ -22,7 +22,7 @@ class BaseMetric implements IUMetric
      * @param callable $measure
      * @return $this
      */
-    public function setMeasure(callable $measure)
+    public function setMeasure(callable $measure): self
     {
         $this->measure = $measure;
         return $this;
@@ -36,7 +36,7 @@ class BaseMetric implements IUMetric
         return $data;
     }
 
-    protected function process()
+    protected function process(): self
     {
         $this->processedData = $this->measure($this->data);
         return $this;
@@ -47,7 +47,7 @@ class BaseMetric implements IUMetric
         return $this->processedData;
     }
 
-    public function build()
+    public function build(): self
     {
         return $this->process();
     }

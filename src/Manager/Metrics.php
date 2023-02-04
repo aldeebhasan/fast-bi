@@ -15,6 +15,7 @@ use Aldeebhasan\FastBi\Models\Metrics\SumMetric;
  * @method static MinMetric min(string $name, array $data)
  * @method static MedianMetric median(string $name, array $data)
  * @method static AvgMetric avg(string $name, array $data)
+ * @method static BaseMetric raw(string $name, array $data)
  */
 class Metrics
 {
