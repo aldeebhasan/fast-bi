@@ -1,0 +1,34 @@
+.fast-table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.fast-table thead tr {
+    background-color: #777;
+    color: #ffffff;
+    text-align: left;
+}
+.fast-table th,
+.fast-table td {
+    padding: 12px 15px;
+}
+.fast-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.fast-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.fast-table tbody tr:last-of-type {
+    border-bottom: 2px solid #013d31;
+}
+
+.fast-table tbody tr td.active {
+    font-weight: bold;
+    text-align: center;
+    background-color: #cbcbcb;
+}

@@ -24,4 +24,9 @@ if (!function_exists('includeWithVariables')) {
         return __DIR__ . "/../Views/Widgets/$fineName";
     }
 
+    function assetPath($fineName)
+    {
+        return __DIR__ . "/../../public/$fineName";
+    }
+
 }

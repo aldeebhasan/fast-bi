@@ -38,6 +38,6 @@ class BaseWidget implements IUWidget
      */
     public function render()
     {
-        throw  new \Exception("No render methods is specified");
+       return "Widget is not supported";
     }
 }

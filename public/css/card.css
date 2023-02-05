@@ -1,0 +1,19 @@
+.fast-card {
+    margin: 1em auto;
+    height: fit-content;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border-top: 4px solid #777;
+    padding: 1em;
+    max-width: 500px;
+}
+
+.fast-card-header {
+    transition: color 0.3s;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+.fast-card-body {
+}
