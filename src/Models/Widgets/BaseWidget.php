@@ -6,38 +6,57 @@ use Aldeebhasan\FastBi\Interfaces\IUDimension;
 use Aldeebhasan\FastBi\Interfaces\IUMetric;
 use Aldeebhasan\FastBi\Interfaces\IUWidget;
 
-class BaseWidget implements IUWidget
+abstract class BaseWidget implements IUWidget
 {
-    protected $dimensions;
-    protected $name;
+    protected $dimensions = [];
+    protected $metrics = [];
+    protected $name = '';
+    protected $key = '';
 
     public function __construct($name)
     {
-        $this->name = $name;
+        $this->name = ucfirst($name);
+        $this->key = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $name)));
     }
 
 
     public function dimensions($dimensions): IUWidget
     {
         $finalDimensions = [];
-        foreach ($dimensions as $dimension) {
+        foreach ($dimensions as $name => $dimension) {
             if ($dimension instanceof IUDimension) {
-                $finalDimensions[] = (array)$dimension->build()->getData();
+                $finalDimensions[$name] = (array)$dimension->build()->getData();
             } elseif ($dimension instanceof IUMetric) {
-                $finalDimensions[] = (array)$dimension->build()->getData();
+                $finalDimensions[$name] = (array)$dimension->build()->getData();
             } else {
-                $finalDimensions[] = (array)$dimension;
+                $finalDimensions[$name] = (array)$dimension;
             }
         }
         $this->dimensions = $finalDimensions;
         return $this;
     }
 
+    public function metrics($metrics): IUWidget
+    {
+        $finalMetrics = [];
+        foreach ($metrics as $name => $metric) {
+            if ($metric instanceof IUMetric) {
+                $finalMetrics[$name] = (string)$metric->build()->getData();
+            } else {
+                $finalMetrics[$name] = (string)$metric;
+            }
+        }
+        $this->metrics = $finalMetrics;
+        return $this;
+    }
+
+    abstract function prepare();
+
     /**
      * @throws \Exception
      */
     public function render()
     {
-       return "Widget is not supported";
+        return "Widget is not supported";
     }
 }

@@ -6,42 +6,31 @@
 </style>
 <div class="fast-card">
     <div class="fast-card-header">
-        Table
+        <?= $title ?>
     </div>
     <div class="fast-card-body">
-        <table class="fast-table" id="<?= $id ?>">
-            <?php $headerCount = isset($headers) ? count($headers) : 0;
-            if ($headerCount > 0) { ?>
-                <thead>
-                <tr>
-                    <?php for ($i = 0; $i < $headerCount; $i++) { ?>
-                        <th> <?= $headers[$i] ?></th>
-                    <?php } ?>
-
-                    <?= ($headerCount < $maxColumnCount)
-                        ? "<th colspan='" . ($maxColumnCount - $headerCount + 1) . "'></th>"
-                        : ""
-                    ?>
-                </tr>
-                </thead>
-            <?php } ?>
+        <table class="fast-table" id="<?= $key ?>">
+            <thead>
+            <tr>
+                <?php foreach ($labels as $col) { ?>
+                    <th> <?= $col ?></th>
+                <?php } ?>
+            </tr>
+            </thead>
             <tbody>
-            <?php foreach ($rows as $key => $row) { ?>
+            <?php foreach ($attributes as $key => $row) { ?>
                 <tr>
-                <?php $colCount = count($row); ?>
-                <?php if ($colCount == 1) { ?>
-                    <td class="active" colspan='<?= $maxColumnCount ?>'> <?= $row[0] ?></td>
-                <?php } else {
-                    for ($i = 0; $i < $colCount; $i++) { ?>
-                        <td> <?= $row[$i] ?></td>
+                    <?php foreach ($row as $col) { ?>
+                        <td> <?= $col ?></td>
                     <?php } ?>
-                    <?= ($colCount < $maxColumnCount)
-                    ? "<td colspan='" . ($maxColumnCount - $colCount + 1) . "'></td>"
-                    : ""
-                    ?>
-                    </tr>
-                <?php }
-            } ?>
+                </tr>
+            <?php } ?>
+
+            <?php foreach ($statistics as $statistic) { ?>
+                <tr class="active">
+                    <td colspan='100%'> <?= $statistic['key'] ?> : <?= $statistic['value'] ?></td>
+                </tr>
+            <?php } ?>
             </tbody>
         </table>
     </div>

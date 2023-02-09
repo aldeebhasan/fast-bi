@@ -16,7 +16,7 @@ if (!function_exists('includeWithVariables')) {
 
     function maxCount($data)
     {
-        return max(...array_map(fn($x) => count((array)$x), $data));
+        return max(array_map(fn($x) => count((array)$x) , $data));
     }
 
     function widgetPath($fineName)

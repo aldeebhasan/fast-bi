@@ -11,6 +11,7 @@ interface IUWidget
      * @return IUWidget
      */
     public function dimensions($dimensions): IUWidget;
+    public function metrics($metrics): IUWidget;
 
     public function render();
 }
