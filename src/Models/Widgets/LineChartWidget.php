@@ -9,8 +9,9 @@ class LineChartWidget extends BaseChartWidget
         $data = [
             'key' => $this->key,
             'title' => $this->name,
+            'type' => 'line',
             ...$this->prepare()
         ];
-        return includeView(widgetPath('line-chart.php'), $data);
+        return includeView(widgetPath('info-chart.php'), $data);
     }
 }

@@ -28,7 +28,6 @@
 }
 
 .fast-table tbody tr.active {
-    font-weight: bold;
     text-align: center;
     background-color: #cbcbcb;
 }

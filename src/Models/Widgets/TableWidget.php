@@ -5,9 +5,17 @@ namespace Aldeebhasan\FastBi\Models\Widgets;
 class TableWidget extends BaseWidget
 {
 
-    public function prepare()
+    protected function handleMetrics(): array
     {
-        $labels = array_map(fn($x) => ucfirst($x), array_keys($this->dimensions));
+        $statistics = [];
+        foreach ($this->metrics as $key => $metric) {
+            $statistics [] = ['key' => ucfirst($key), 'value' => $metric];
+        }
+        return $statistics;
+    }
+
+    protected function handleDimensions(): array
+    {
         $maxAttributes = maxCount($this->dimensions);
         $attributes = [];
         for ($i = 0; $i < $maxAttributes; $i++) {
@@ -16,10 +24,14 @@ class TableWidget extends BaseWidget
                 return $carry;
             }, []);
         }
-        $statistics = [];
-        foreach ($this->metrics as $key => $metric) {
-            $statistics [] = ['key' => ucfirst($key), 'value' => $metric];
-        }
+        return $attributes;
+    }
+
+    protected function prepare()
+    {
+        $labels = array_map(fn($x) => ucfirst($x), array_keys($this->dimensions));
+        $attributes = $this->handleDimensions();
+        $statistics = $this->handleMetrics();
         return compact('labels', 'attributes', 'statistics');
     }
 

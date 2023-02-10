@@ -5,27 +5,24 @@ namespace Aldeebhasan\FastBi\Models\Widgets;
 class BaseChartWidget extends BaseWidget
 {
 
-    private $labels = [];
 
-    function labels($data)
+    protected function handleMetrics(): array
     {
-        $this->labels = $data;
-        return $this;
+        $statistics = [];
+        foreach ($this->metrics as $key => $metric) {
+            $statistics [] = ['key' => ucfirst($key), 'value' => $metric];
+        }
+        return $statistics;
     }
 
-    public function prepare()
+    protected function handleDimensions(): array
     {
         $maxLength = maxCount($this->dimensions);
-        //handle labels
-        $labels = $this->labels;
-        $count = count($labels);
-        if ($count != $maxLength) {
-            $fill = array_fill(0, $maxLength - $count, "*");
-            $labels = array_merge($labels, $fill);
-        }
-        //handle attributes
         $attributes = [];
-        foreach ($this->dimensions as $key => $dimension) {
+        $keys = array_keys($this->dimensions);
+        for ($i = 1; $i < count($keys); $i++) {
+            $key = $keys[$i];
+            $dimension = $this->dimensions[$key];
             $count = count($dimension);
             if ($count != $maxLength) {
                 $fill = array_fill(0, $maxLength - $count, 0);
@@ -34,14 +31,37 @@ class BaseChartWidget extends BaseWidget
                 $attributes[$key] = $dimension;
             }
         }
-        $statistics = [];
-        foreach ($this->metrics as $key => $metric) {
-            $statistics [] = ['key' => ucfirst($key), 'value' => $metric];
-        }
-        $options = [
+        return $attributes;
+    }
+
+    function handleOptions()
+    {
+        return [
             'responsive' => true,
-            'stacked' => false,
         ];
+    }
+
+
+    protected function handleLabels(): array
+    {
+        $maxLength = maxCount($this->dimensions);
+        if ($maxLength == 0) return [];
+        //handle labels
+        $labels = $this->dimensions[array_keys($this->dimensions)[0]] ?? [];
+        $count = count($labels);
+        if ($count != $maxLength) {
+            $fill = array_fill(0, $maxLength - $count, "*");
+            $labels = array_merge($labels, $fill);
+        }
+        return $labels;
+    }
+
+    protected function prepare()
+    {
+        $labels = $this->handleLabels();
+        $attributes = $this->handleDimensions();
+        $statistics = $this->handleMetrics();
+        $options = $this->handleOptions();
         return compact('labels', 'attributes', 'statistics', 'options');
     }
 

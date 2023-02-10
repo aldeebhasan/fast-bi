@@ -15,7 +15,7 @@ class BaseDimension implements IUDimension
      * @param $name
      * @param $data
      */
-    public function __construct($name, $data)
+    public function __construct(string $name, $data)
     {
         $this->name = $name;
         $this->data = $data;

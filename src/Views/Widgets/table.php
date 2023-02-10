@@ -1,9 +1,6 @@
-<style>
-    <?php
-    include_once assetPath('css/table.css');
-    include_once assetPath('css/card.css');
-    ?>
-</style>
+<?php
+include_once 'includes/styles.php';
+?>
 <div class="fast-card">
     <div class="fast-card-header">
         <?= $title ?>
@@ -28,7 +25,10 @@
 
             <?php foreach ($statistics as $statistic) { ?>
                 <tr class="active">
-                    <td colspan='100%'> <?= $statistic['key'] ?> : <?= $statistic['value'] ?></td>
+                    <td colspan='100%'>
+                        <strong><?= $statistic['key'] ?> </strong> :
+                        <?= $statistic['value'] ?>
+                    </td>
                 </tr>
             <?php } ?>
             </tbody>

@@ -6,21 +6,21 @@ use Aldeebhasan\FastBi\Interfaces\IUDimension;
 use Aldeebhasan\FastBi\Interfaces\IUMetric;
 use Aldeebhasan\FastBi\Interfaces\IUWidget;
 
-abstract class BaseWidget implements IUWidget
+class BaseWidget implements IUWidget
 {
     protected $dimensions = [];
     protected $metrics = [];
     protected $name = '';
     protected $key = '';
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = ucfirst($name);
         $this->key = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $name)));
     }
 
 
-    public function dimensions($dimensions): IUWidget
+    public function dimensions(array $dimensions): IUWidget
     {
         $finalDimensions = [];
         foreach ($dimensions as $name => $dimension) {
@@ -36,7 +36,7 @@ abstract class BaseWidget implements IUWidget
         return $this;
     }
 
-    public function metrics($metrics): IUWidget
+    public function metrics(array $metrics): IUWidget
     {
         $finalMetrics = [];
         foreach ($metrics as $name => $metric) {
@@ -50,7 +50,10 @@ abstract class BaseWidget implements IUWidget
         return $this;
     }
 
-    abstract function prepare();
+    protected function prepare()
+    {
+
+    }
 
     /**
      * @throws \Exception

@@ -1,8 +1,6 @@
-<style>
-    <?php
-    include_once assetPath('css/card.css');
-    ?>
-</style>
+<?php
+include_once 'includes/styles.php';
+?>
 
 <div class="fast-card">
     <div class="fast-card-header">
@@ -10,7 +8,7 @@
     </div>
     <div class="fast-card-body">
         <div class="w-100">
-            <canvas id="bar-chart-<?= $key ?>"></canvas>
+            <canvas id="chart-<?= $key ?>"></canvas>
         </div>
     </div>
     <div class="fast-card-footer">
@@ -35,6 +33,6 @@
         for (const [key, value] of Object.entries(attributes)) {
             data.push({label: key, data: value})
         }
-        chart('bar-chart-<?= $key ?>', 'bar', labels, data, options);
+        chart('chart-<?= $key ?>', '<?= $type ?>', labels, data, options);
     })();
 </script>
