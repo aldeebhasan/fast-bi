@@ -24,16 +24,11 @@ include_once 'includes/styles.php';
                     </tr>
                 <?php } ?>
 
-                <?php foreach ($statistics as $statistic) { ?>
-                    <tr class="active">
-                        <td colspan='100%'>
-                            <strong><?= $statistic['key'] ?> </strong> :
-                            <?= $statistic['value'] ?>
-                        </td>
-                    </tr>
-                <?php } ?>
                 </tbody>
             </table>
+        </div>
+        <div class="fast-card-footer">
+            <?= includeView(widgetPath('includes/statistics.php'), compact('statistics')); ?>
         </div>
     </div>
 <?php include_once 'includes/scripts.php'; ?>

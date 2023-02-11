@@ -19,5 +19,9 @@ include_once 'includes/styles.php';
 
         </div>
     <?php } ?>
+
+    <div class="fast-card-footer">
+        <?= includeView(widgetPath('includes/statistics.php'), compact('statistics')); ?>
+    </div>
 </div>
 <?php include_once 'includes/scripts.php'; ?>

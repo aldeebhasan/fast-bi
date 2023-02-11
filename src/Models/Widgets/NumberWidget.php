@@ -16,7 +16,7 @@ class NumberWidget extends BaseWidget
     protected function handleDimensions(): array
     {
         $attributes = [];
-        foreach ($this->dimensions as $dimension){
+        foreach ($this->dimensions as $dimension) {
             $attributes[] = reset($dimension);
         }
         return $attributes;

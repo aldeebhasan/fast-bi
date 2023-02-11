@@ -13,15 +13,7 @@ include_once 'includes/styles.php';
         </div>
     </div>
     <div class="fast-card-footer">
-        <div class="w-100 inline">
-            <?php foreach ($statistics as $statistic) { ?>
-                <div class="statistic">
-                    <span class="title"> <?= $statistic['value'] ?> </span>
-                    <span><?= $statistic['key'] ?></span>
-                </div>
-            <?php } ?>
-
-        </div>
+        <?= includeView(widgetPath('includes/statistics.php'), compact('statistics')); ?>
     </div>
 </div>
 <?php include_once 'includes/scripts.php'; ?>
