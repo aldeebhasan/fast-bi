@@ -1,6 +1,5 @@
 <style>
     <?php
-    include assetPath('css/table.css');
-    include assetPath('css/card.css');
+    include assetPath('css/style.css');
     ?>
 </style>

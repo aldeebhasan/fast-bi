@@ -1,0 +1,146 @@
+.fast-card {
+    margin: 1em auto;
+    height: fit-content;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1em;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.fast-card-header {
+    transition: color 0.3s;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+.fast-card-header .fast-icon{
+    float: right;
+}
+
+.fast-icon{
+    padding: 2px;
+    border-radius: 2px;
+    max-height: 20px;
+    cursor: pointer;
+
+}
+.fast-icon img{
+    width: 20px;
+}
+
+.fast-card-body {
+
+}
+
+.fast-card-footer {
+    border-top: 1px solid #eee;
+    margin-top: 1em;
+    padding-top: 1em;
+    overflow-x: auto;
+}
+
+.inline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.statistic {
+    color: #333;
+    padding: .5em 1em;
+    margin:  .5em;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    min-width: 20%;
+}
+
+.statistic .title {
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: block;
+    line-height: 1;
+    margin: 0 auto;
+}
+
+.fast-table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.fast-table thead tr {
+    background-color: #777;
+    color: #ffffff;
+    text-align: left;
+}
+.fast-table th,
+.fast-table td {
+    padding: 12px 15px;
+}
+.fast-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.fast-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.fast-table tbody tr:last-of-type {
+    border-bottom: 2px solid #013d31;
+}
+
+.fast-table tbody tr.active {
+    text-align: center;
+    background-color: #cbcbcb;
+}
+
+.fast-number-container{
+    display: block;
+}
+.fast-number {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.fast-number .title{
+    font-weight: bold;
+    color: #333;
+    font-size: 1.4em;
+    display: block;
+    text-align: center;
+}
+.fast-number p{
+    margin-top: .5em;
+    font-style: italic;
+    font-size: 1.1em;
+    color: #999;
+    text-align: center;
+}
+
+
+@media (max-width: 600px) {
+    .statistic {
+        width: 100% !important;
+    }
+}
+
+@media print {
+    .fast-icon {
+        display: none !important;
+    }
+}

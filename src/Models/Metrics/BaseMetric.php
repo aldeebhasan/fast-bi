@@ -3,8 +3,9 @@
 namespace Aldeebhasan\FastBi\Models\Metrics;
 
 use Aldeebhasan\FastBi\Interfaces\IUMetric;
+use Aldeebhasan\FastBi\Models\BaseModel;
 
-class BaseMetric implements IUMetric
+class BaseMetric extends BaseModel implements IUMetric
 {
     protected string $name;
     protected array $data;

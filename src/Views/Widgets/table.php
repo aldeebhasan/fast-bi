@@ -1,37 +1,39 @@
 <?php
 include_once 'includes/styles.php';
 ?>
-<div class="fast-card">
-    <div class="fast-card-header">
-        <?= $title ?>
-    </div>
-    <div class="fast-card-body">
-        <table class="fast-table" id="<?= $key ?>">
-            <thead>
-            <tr>
-                <?php foreach ($labels as $col) { ?>
-                    <th> <?= $col ?></th>
-                <?php } ?>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($attributes as $key => $row) { ?>
+    <div class="fast-card" id="<?= $key ?>">
+        <div class="fast-card-header">
+            <?= $title ?>
+            <a class="fast-icon" onclick="exports('<?= $key ?>')"> <img src="https://i.ibb.co/2qGYnBp/icons8-export-64.png"/> </a>
+        </div>
+        <div class="fast-card-body">
+            <table class="fast-table">
+                <thead>
                 <tr>
-                    <?php foreach ($row as $col) { ?>
-                        <td> <?= $col ?></td>
+                    <?php foreach ($labels as $col) { ?>
+                        <th> <?= $col ?></th>
                     <?php } ?>
                 </tr>
-            <?php } ?>
+                </thead>
+                <tbody>
+                <?php foreach ($attributes as $key => $row) { ?>
+                    <tr>
+                        <?php foreach ($row as $col) { ?>
+                            <td> <?= $col ?></td>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
 
-            <?php foreach ($statistics as $statistic) { ?>
-                <tr class="active">
-                    <td colspan='100%'>
-                        <strong><?= $statistic['key'] ?> </strong> :
-                        <?= $statistic['value'] ?>
-                    </td>
-                </tr>
-            <?php } ?>
-            </tbody>
-        </table>
+                <?php foreach ($statistics as $statistic) { ?>
+                    <tr class="active">
+                        <td colspan='100%'>
+                            <strong><?= $statistic['key'] ?> </strong> :
+                            <?= $statistic['value'] ?>
+                        </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+<?php include_once 'includes/scripts.php'; ?>

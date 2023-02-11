@@ -5,8 +5,9 @@ namespace Aldeebhasan\FastBi\Models\Widgets;
 use Aldeebhasan\FastBi\Interfaces\IUDimension;
 use Aldeebhasan\FastBi\Interfaces\IUMetric;
 use Aldeebhasan\FastBi\Interfaces\IUWidget;
+use Aldeebhasan\FastBi\Models\BaseModel;
 
-class BaseWidget implements IUWidget
+class BaseWidget extends BaseModel implements IUWidget
 {
     protected $dimensions = [];
     protected $metrics = [];
@@ -30,6 +31,9 @@ class BaseWidget implements IUWidget
                 }
                 $finalDimensions[$name] = (array)$dimension->build()->getData();
             } elseif ($dimension instanceof IUMetric) {
+                if (is_numeric($name)) {
+                    $name = $dimension->getName();
+                }
                 $finalDimensions[$name] = (array)$dimension->build()->getData();
             } else {
                 $finalDimensions[$name] = (array)$dimension;

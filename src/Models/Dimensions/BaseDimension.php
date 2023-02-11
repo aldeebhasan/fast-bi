@@ -3,8 +3,9 @@
 namespace Aldeebhasan\FastBi\Models\Dimensions;
 
 use Aldeebhasan\FastBi\Interfaces\IUDimension;
+use Aldeebhasan\FastBi\Models\BaseModel;
 
-class BaseDimension implements IUDimension
+class BaseDimension extends BaseModel implements IUDimension
 {
     protected string $name;
     protected array $data;
