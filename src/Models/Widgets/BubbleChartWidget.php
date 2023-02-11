@@ -4,7 +4,6 @@ namespace Aldeebhasan\FastBi\Models\Widgets;
 
 class BubbleChartWidget extends ScatterChartWidget
 {
-
     protected $radius = 10;
 
     public function render()

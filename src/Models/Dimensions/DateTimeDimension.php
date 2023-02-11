@@ -1,14 +1,12 @@
 <?php
 
-
 namespace Aldeebhasan\FastBi\Models\Dimensions;
 
 class DateTimeDimension extends BaseDimension
 {
-
     private $format = 'Y/m/d';
 
-    public function setFormat(string $format)
+    public function format(string $format)
     {
         $this->format = $format;
         return $this;
@@ -16,7 +14,6 @@ class DateTimeDimension extends BaseDimension
 
     public function transform($data)
     {
-
         return array_map([$this, 'itemTransform'], $data);
     }
 
@@ -28,5 +25,4 @@ class DateTimeDimension extends BaseDimension
         }
         return 'Not supported data';
     }
-
 }

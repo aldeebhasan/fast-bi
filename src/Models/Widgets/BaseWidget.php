@@ -25,6 +25,9 @@ class BaseWidget implements IUWidget
         $finalDimensions = [];
         foreach ($dimensions as $name => $dimension) {
             if ($dimension instanceof IUDimension) {
+                if (is_numeric($name)) {
+                    $name = $dimension->getName();
+                }
                 $finalDimensions[$name] = (array)$dimension->build()->getData();
             } elseif ($dimension instanceof IUMetric) {
                 $finalDimensions[$name] = (array)$dimension->build()->getData();
@@ -41,6 +44,9 @@ class BaseWidget implements IUWidget
         $finalMetrics = [];
         foreach ($metrics as $name => $metric) {
             if ($metric instanceof IUMetric) {
+                if (is_numeric($name)) {
+                    $name = $metric->getName();
+                }
                 $finalMetrics[$name] = (string)$metric->build()->getData();
             } else {
                 $finalMetrics[$name] = (string)$metric;
@@ -52,7 +58,6 @@ class BaseWidget implements IUWidget
 
     protected function prepare()
     {
-
     }
 
     /**

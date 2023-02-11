@@ -4,7 +4,6 @@ namespace Aldeebhasan\FastBi\Models\Widgets;
 
 class BarChartWidget extends BaseChartWidget
 {
-
     public function render()
     {
         $data = [

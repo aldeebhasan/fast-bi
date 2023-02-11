@@ -47,6 +47,11 @@ class BaseMetric implements IUMetric
         return $this->processedData;
     }
 
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
     public function build(): self
     {
         return $this->process();

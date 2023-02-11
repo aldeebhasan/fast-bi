@@ -2,7 +2,7 @@
 
 namespace Aldeebhasan\FastBi\Models\Dimensions;
 
-class StringDimension extends BaseDimension
+class NumberDimension extends BaseDimension
 {
     public function transform($data)
     {
@@ -11,6 +11,6 @@ class StringDimension extends BaseDimension
 
     private function itemTransform($item)
     {
-        return (string)$item;
+        return round((float)$item, 2);
     }
 }

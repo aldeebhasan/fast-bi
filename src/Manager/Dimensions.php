@@ -4,11 +4,13 @@ namespace Aldeebhasan\FastBi\Manager;
 
 use Aldeebhasan\FastBi\Models\Dimensions\BaseDimension;
 use Aldeebhasan\FastBi\Models\Dimensions\DateTimeDimension;
+use Aldeebhasan\FastBi\Models\Dimensions\NumberDimension;
 use Aldeebhasan\FastBi\Models\Dimensions\StringDimension;
 
 /**
  * @method static DateTimeDimension dateTime(string $name, array $data)
  * @method static StringDimension string(string $name, array $data)
+ * @method static NumberDimension number(string $name, array $data)
  * @method static BaseDimension raw(string $name, array $data)
  */
 class Dimensions

@@ -4,8 +4,6 @@ namespace Aldeebhasan\FastBi\Models\Widgets;
 
 class BaseChartWidget extends BaseWidget
 {
-
-
     protected function handleMetrics(): array
     {
         $statistics = [];
@@ -34,7 +32,7 @@ class BaseChartWidget extends BaseWidget
         return $attributes;
     }
 
-    function handleOptions()
+    public function handleOptions()
     {
         return [
             'responsive' => true,
@@ -45,7 +43,9 @@ class BaseChartWidget extends BaseWidget
     protected function handleLabels(): array
     {
         $maxLength = maxCount($this->dimensions);
-        if ($maxLength == 0) return [];
+        if ($maxLength == 0) {
+            return [];
+        }
         //handle labels
         $labels = $this->dimensions[array_keys($this->dimensions)[0]] ?? [];
         $count = count($labels);
@@ -64,6 +64,4 @@ class BaseChartWidget extends BaseWidget
         $options = $this->handleOptions();
         return compact('labels', 'attributes', 'statistics', 'options');
     }
-
-
 }

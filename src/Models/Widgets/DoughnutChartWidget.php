@@ -2,14 +2,14 @@
 
 namespace Aldeebhasan\FastBi\Models\Widgets;
 
-class PieChartWidget extends BaseChartWidget
+class DoughnutChartWidget extends BaseChartWidget
 {
     public function render()
     {
         $data = [
             'key' => $this->key,
             'title' => $this->name,
-            'type' => 'pie',
+            'type' => 'doughnut',
             ...$this->prepare()
         ];
         return includeView(widgetPath('info-chart.php'), $data);

@@ -8,5 +8,7 @@ interface IUDimension
 
     public function getData();
 
+    public function getName(): string;
+
     public function build(): IUDimension;
 }

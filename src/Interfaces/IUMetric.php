@@ -8,5 +8,7 @@ interface IUMetric
 
     public function getData();
 
+    public function getName(): string;
+
     public function build(): IUMetric;
 }

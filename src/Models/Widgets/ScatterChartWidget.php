@@ -17,7 +17,8 @@ class ScatterChartWidget extends BaseChartWidget
             $axis_1 = $keys[0] ?? null;
             $axis_2 = $keys[$i] ?? null;
             for ($j = 0; $j < $maxLength; $j++) {
-                $attributes["$axis_1-$axis_2"][] = [
+                $label =  ucfirst("$axis_2 to $axis_1");
+                $attributes[$label][] = [
                     'x' => $this->dimensions[$axis_1][$j] ?? 0,
                     'y' => $this->dimensions[$axis_2][$j] ?? 0,
                     'r' => rand(1, $this->radius)

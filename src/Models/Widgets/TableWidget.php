@@ -4,7 +4,6 @@ namespace Aldeebhasan\FastBi\Models\Widgets;
 
 class TableWidget extends BaseWidget
 {
-
     protected function handleMetrics(): array
     {
         $statistics = [];
@@ -29,7 +28,7 @@ class TableWidget extends BaseWidget
 
     protected function prepare()
     {
-        $labels = array_map(fn($x) => ucfirst($x), array_keys($this->dimensions));
+        $labels = array_map(fn ($x) => ucfirst($x), array_keys($this->dimensions));
         $attributes = $this->handleDimensions();
         $statistics = $this->handleMetrics();
         return compact('labels', 'attributes', 'statistics');

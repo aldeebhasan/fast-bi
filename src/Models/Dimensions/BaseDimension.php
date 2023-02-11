@@ -48,6 +48,10 @@ class BaseDimension implements IUDimension
         return $this->processedData;
     }
 
+    public function getName(): string
+    {
+        return $this->name;
+    }
 
     public function build(): self
     {

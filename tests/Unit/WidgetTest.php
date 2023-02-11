@@ -9,8 +9,7 @@ use Aldeebhasan\FastBi\Test\TestCase;
 
 class WidgetTest extends TestCase
 {
-
-    function testTableWidget()
+    public function testTableWidget()
     {
         $widget = Widgets::table('table')
             ->dimensions([
@@ -21,7 +20,7 @@ class WidgetTest extends TestCase
         self::assertNotNull($widget);
     }
 
-    function testBarChartWidget()
+    public function testBarChartWidget()
     {
         $widget = Widgets::barChart('chart')
             ->dimensions([
@@ -32,7 +31,7 @@ class WidgetTest extends TestCase
         self::assertNotNull($widget);
     }
 
-    function testLineChartWidget()
+    public function testLineChartWidget()
     {
         $widget = Widgets::lineChart('chart')
             ->dimensions([
@@ -43,7 +42,7 @@ class WidgetTest extends TestCase
         self::assertNotNull($widget);
     }
 
-    function testScatterChartWidget()
+    public function testScatterChartWidget()
     {
         $widget = Widgets::scatterChart('chart')
             ->dimensions([
@@ -54,7 +53,7 @@ class WidgetTest extends TestCase
         self::assertNotNull($widget);
     }
 
-    function testBibbleChartWidget()
+    public function testBibbleChartWidget()
     {
         $widget = Widgets::bubbleChart('chart')
             ->dimensions([
@@ -65,7 +64,7 @@ class WidgetTest extends TestCase
         self::assertNotNull($widget);
     }
 
-    function testPieChartWidget()
+    public function testPieChartWidget()
     {
         $widget = Widgets::pieChart('chart')
             ->dimensions([
@@ -76,7 +75,7 @@ class WidgetTest extends TestCase
         self::assertNotNull($widget);
     }
 
-    function testNotFoundWidget()
+    public function testNotFoundWidget()
     {
         $widget = Widgets::table('table')
             ->dimensions([
@@ -85,5 +84,4 @@ class WidgetTest extends TestCase
             ])->render();
         self::assertNotNull($widget);
     }
-
 }
