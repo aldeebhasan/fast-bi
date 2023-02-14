@@ -1,4 +1,4 @@
-<script src="  http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<script src="http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 <script>
     function exports(id) {
         html2canvas(document.querySelector("#" + id)).then(canvas => {

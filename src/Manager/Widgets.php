@@ -7,13 +7,18 @@ use Aldeebhasan\FastBi\Models\Widgets\BarChartWidget;
 use Aldeebhasan\FastBi\Models\Widgets\BubbleChartWidget;
 use Aldeebhasan\FastBi\Models\Widgets\NumberWidget;
 use Aldeebhasan\FastBi\Models\Widgets\PieChartWidget;
+use Aldeebhasan\FastBi\Models\Widgets\PolarAreaChartWidget;
+use Aldeebhasan\FastBi\Models\Widgets\ProgressBarWidget;
+use Aldeebhasan\FastBi\Models\Widgets\RadarChartWidget;
 use Aldeebhasan\FastBi\Models\Widgets\ScatterChartWidget;
 use Aldeebhasan\FastBi\Models\Widgets\TableWidget;
 
 /**
  * @method static TableWidget table(string $name)
  * @method static NumberWidget number(string $name)
- * @method static NumberWidget progressBar(string $name)
+ * @method static ProgressBarWidget progressBar(string $name)
+ * @method static PolarAreaChartWidget polarAreaChart(string $name)
+ * @method static RadarChartWidget radarChart(string $name)
  * @method static BarChartWidget barChart(string $name)
  * @method static BarChartWidget lineChart(string $name)
  * @method static ScatterChartWidget scatterChart(string $name)
