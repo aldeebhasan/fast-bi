@@ -2,15 +2,25 @@
 
 namespace Aldeebhasan\FastBi\Models\Widgets;
 
-class BaseChartWidget extends BaseWidget
+abstract class BaseChartWidget extends BaseWidget
 {
-    protected function handleMetrics(): array
+    protected $type = '';
+    protected $view = 'info-chart';
+
+    protected function handleLabels(): array
     {
-        $statistics = [];
-        foreach ($this->metrics as $key => $metric) {
-            $statistics [] = ['key' => ucfirst($key), 'value' => $metric];
+        $maxLength = maxCount($this->dimensions);
+        if ($maxLength == 0) {
+            return [];
         }
-        return $statistics;
+        //handle labels
+        $labels = $this->dimensions[array_keys($this->dimensions)[0]] ?? [];
+        $count = count($labels);
+        if ($count != $maxLength) {
+            $fill = array_fill(0, $maxLength - $count, "*");
+            $labels = array_merge($labels, $fill);
+        }
+        return $labels;
     }
 
     protected function handleDimensions(): array
@@ -32,36 +42,15 @@ class BaseChartWidget extends BaseWidget
         return $attributes;
     }
 
-    public function handleOptions()
+    protected function handleOptions(): array
     {
         return [
             'responsive' => true,
         ];
     }
 
-
-    protected function handleLabels(): array
-    {
-        $maxLength = maxCount($this->dimensions);
-        if ($maxLength == 0) {
-            return [];
-        }
-        //handle labels
-        $labels = $this->dimensions[array_keys($this->dimensions)[0]] ?? [];
-        $count = count($labels);
-        if ($count != $maxLength) {
-            $fill = array_fill(0, $maxLength - $count, "*");
-            $labels = array_merge($labels, $fill);
-        }
-        return $labels;
-    }
-
     protected function prepare()
     {
-        $labels = $this->handleLabels();
-        $attributes = $this->handleDimensions();
-        $statistics = $this->handleMetrics();
-        $options = $this->handleOptions();
-        return compact('labels', 'attributes', 'statistics', 'options');
+        return parent::prepare() + ['type' => $this->type];
     }
 }

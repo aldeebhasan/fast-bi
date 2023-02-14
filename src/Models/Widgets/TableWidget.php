@@ -4,14 +4,7 @@ namespace Aldeebhasan\FastBi\Models\Widgets;
 
 class TableWidget extends BaseWidget
 {
-    protected function handleMetrics(): array
-    {
-        $statistics = [];
-        foreach ($this->metrics as $key => $metric) {
-            $statistics [] = ['key' => ucfirst($key), 'value' => $metric];
-        }
-        return $statistics;
-    }
+    protected $view = 'table';
 
     protected function handleDimensions(): array
     {
@@ -24,23 +17,5 @@ class TableWidget extends BaseWidget
             }, []);
         }
         return $attributes;
-    }
-
-    protected function prepare()
-    {
-        $labels = array_map(fn ($x) => ucfirst($x), array_keys($this->dimensions));
-        $attributes = $this->handleDimensions();
-        $statistics = $this->handleMetrics();
-        return compact('labels', 'attributes', 'statistics');
-    }
-
-    public function render()
-    {
-        $data = [
-            'key' => $this->key,
-            'title' => $this->name,
-            ...$this->prepare()
-        ];
-        return includeView(widgetPath('table.php'), $data);
     }
 }

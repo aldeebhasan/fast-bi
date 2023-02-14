@@ -13,6 +13,7 @@ class BaseWidget extends BaseModel implements IUWidget
     protected $metrics = [];
     protected $name = '';
     protected $key = '';
+    protected $view = '';
 
     public function __construct(string $name)
     {
@@ -60,8 +61,38 @@ class BaseWidget extends BaseModel implements IUWidget
         return $this;
     }
 
+
+    protected function handleMetrics(): array
+    {
+        $metrics = [];
+        foreach ($this->metrics as $key => $metric) {
+            $metrics [] = ['key' => ucfirst($key), 'value' => $metric];
+        }
+        return $metrics;
+    }
+
+    protected function handleLabels(): array
+    {
+        return array_map(fn ($x) => ucfirst($x), array_keys($this->dimensions));
+    }
+
+    protected function handleDimensions(): array
+    {
+        return $this->dimensions;
+    }
+
+    protected function handleOptions(): array
+    {
+        return [];
+    }
+
     protected function prepare()
     {
+        $labels = $this->handleLabels();
+        $attributes = $this->handleDimensions();
+        $statistics = $this->handleMetrics();
+        $options = $this->handleOptions();
+        return compact('labels', 'attributes', 'statistics', 'options');
     }
 
     /**
@@ -69,6 +100,14 @@ class BaseWidget extends BaseModel implements IUWidget
      */
     public function render()
     {
-        return "Widget is not supported";
+        if (!$this->view) {
+            return "Widget is not supported";
+        }
+        $data = [
+            'key' => $this->key,
+            'title' => $this->name,
+            ...$this->prepare()
+        ];
+        return includeView(widgetPath("$this->view.php"), $data);
     }
 }

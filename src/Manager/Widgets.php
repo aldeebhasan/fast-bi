@@ -13,6 +13,7 @@ use Aldeebhasan\FastBi\Models\Widgets\TableWidget;
 /**
  * @method static TableWidget table(string $name)
  * @method static NumberWidget number(string $name)
+ * @method static NumberWidget progressBar(string $name)
  * @method static BarChartWidget barChart(string $name)
  * @method static BarChartWidget lineChart(string $name)
  * @method static ScatterChartWidget scatterChart(string $name)

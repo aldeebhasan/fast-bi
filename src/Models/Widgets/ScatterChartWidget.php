@@ -4,6 +4,7 @@ namespace Aldeebhasan\FastBi\Models\Widgets;
 
 class ScatterChartWidget extends BaseChartWidget
 {
+    protected $type = 'scatter';
     protected $radius = 1;
 
     protected function handleDimensions(): array
@@ -26,16 +27,5 @@ class ScatterChartWidget extends BaseChartWidget
             }
         }
         return $attributes;
-    }
-
-    public function render()
-    {
-        $data = [
-            'key' => $this->key,
-            'title' => $this->name,
-            'type' => 'scatter',
-            ...$this->prepare()
-        ];
-        return includeView(widgetPath('info-chart.php'), $data);
     }
 }
