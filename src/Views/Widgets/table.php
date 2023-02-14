@@ -4,7 +4,8 @@ include_once 'includes/styles.php';
     <div class="fast-card" id="<?= $key ?>">
         <div class="fast-card-header">
             <?= $title ?>
-            <a class="fast-icon" onclick="exports('<?= $key ?>')"> <img src="https://i.ibb.co/2qGYnBp/icons8-export-64.png"/> </a>
+            <a class="fast-icon" onclick="exports('<?= $key ?>')"> <img
+                        src="https://i.ibb.co/2qGYnBp/icons8-export-64.png"/> </a>
         </div>
         <div class="fast-card-body">
             <table class="fast-table">
@@ -27,8 +28,10 @@ include_once 'includes/styles.php';
                 </tbody>
             </table>
         </div>
-        <div class="fast-card-footer">
-            <?= includeView(widgetPath('includes/statistics.php'), compact('statistics')); ?>
-        </div>
+        <?php if (count($statistics)) { ?>
+            <div class="fast-card-footer">
+                <?= includeView(widgetPath('includes/statistics.php'), compact('statistics')); ?>
+            </div>
+        <?php } ?>
     </div>
 <?php include_once 'includes/scripts.php'; ?>

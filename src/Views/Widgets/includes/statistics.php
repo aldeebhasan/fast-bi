@@ -1,4 +1,4 @@
-<div class="w-100 inline">
+<div class="w-100 statistic-container">
     <?php foreach ($statistics as $statistic) { ?>
         <div class="statistic">
             <span class="title"> <?= $statistic['value'] ?> </span>

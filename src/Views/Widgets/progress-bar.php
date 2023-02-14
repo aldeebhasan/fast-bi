@@ -11,9 +11,16 @@ include_once 'includes/styles.php';
         <div class="fast-card-body fast-number-container">
             <?php for ($i = 0; $i < count($labels); $i++) { ?>
 
-                <div class="fast-number">
-                    <span class="title"> <?= $attributes[$i] ?> </span>
-                    <span class="value"><?= $labels[$i] ?></span>
+                <div class="fast-bar">
+                    <div class="info">
+                        <span class="title"> <?= $attributes[$i] ?>% </span>
+                        <span class="value"><?= $labels[$i] ?></span>
+                    </div>
+                    <div class="bar">
+                    <div class="bar-inner progress-bar-animated" style="width:<?= $attributes[$i] ?>%">
+                        <div class="progress"></div>
+                    </div>
+                    </div>
                 </div>
             <?php } ?>
         </div>
