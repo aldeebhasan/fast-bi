@@ -224,6 +224,11 @@
     text-align: center;
 }
 
+.loading {
+    margin-top: 10em;
+    text-align: center;
+    color: gray;
+}
 
 @media (max-width: 600px) {
     .statistic {

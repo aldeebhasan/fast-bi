@@ -5,6 +5,7 @@ namespace Aldeebhasan\FastBi\Manager;
 use Aldeebhasan\FastBi\Models\Metrics\BaseMetric;
 use Aldeebhasan\FastBi\Models\Widgets\BarChartWidget;
 use Aldeebhasan\FastBi\Models\Widgets\BubbleChartWidget;
+use Aldeebhasan\FastBi\Models\Widgets\GeoMapWidget;
 use Aldeebhasan\FastBi\Models\Widgets\NumberWidget;
 use Aldeebhasan\FastBi\Models\Widgets\PieChartWidget;
 use Aldeebhasan\FastBi\Models\Widgets\PolarAreaChartWidget;
@@ -15,6 +16,7 @@ use Aldeebhasan\FastBi\Models\Widgets\TableWidget;
 
 /**
  * @method static TableWidget table(string $name)
+ * @method static GeoMapWidget geoMap(string $name)
  * @method static NumberWidget number(string $name)
  * @method static ProgressBarWidget progressBar(string $name)
  * @method static PolarAreaChartWidget polarAreaChart(string $name)
