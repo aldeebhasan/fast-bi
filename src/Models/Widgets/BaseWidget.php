@@ -9,6 +9,7 @@ use Aldeebhasan\FastBi\Models\BaseModel;
 
 class BaseWidget extends BaseModel implements IUWidget
 {
+    protected $labels = [];
     protected $dimensions = [];
     protected $metrics = [];
     protected $name = '';
@@ -21,6 +22,11 @@ class BaseWidget extends BaseModel implements IUWidget
         $this->key = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $name)));
     }
 
+    public function labels(array $labels): IUWidget
+    {
+        $this->labels = $labels;
+        return $this;
+    }
 
     public function dimensions(array $dimensions): IUWidget
     {
@@ -61,6 +67,7 @@ class BaseWidget extends BaseModel implements IUWidget
         return $this;
     }
 
+    //--------------------------------------
 
     protected function handleMetrics(): array
     {
@@ -73,7 +80,16 @@ class BaseWidget extends BaseModel implements IUWidget
 
     protected function handleLabels(): array
     {
-        return array_map(fn ($x) => ucfirst($x), array_keys($this->dimensions));
+        if (empty($this->labels)) {
+            return array_keys($this->dimensions);
+        }
+        $maxLength = count($this->dimensions);
+        $count = count($this->labels);
+        $fill = [];
+        if ($count < $maxLength) {
+            $fill = array_fill(0, $maxLength - $count, "*");
+        }
+        return array_merge($this->labels, $fill);
     }
 
     protected function handleDimensions(): array

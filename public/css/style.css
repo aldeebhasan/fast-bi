@@ -179,6 +179,7 @@
     border-radius: 16px;
     background-color: #f1f1f1 !important;
     margin: .5em .5em 1em;
+    padding: 0.2em;
     -webkit-transition: width .6s ease;
     -o-transition: width .6s ease;
     transition: width .6s ease
@@ -207,7 +208,7 @@
 
 @-webkit-keyframes progress-active {
     0% {
-        opacity: .4;
+        opacity: .6;
         width: 0
     }
     100% {

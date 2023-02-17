@@ -10,17 +10,12 @@ abstract class BaseChartWidget extends BaseWidget
     protected function handleLabels(): array
     {
         $maxLength = maxCount($this->dimensions);
-        if ($maxLength == 0) {
-            return [];
-        }
-        //handle labels
-        $labels = $this->dimensions[array_keys($this->dimensions)[0]] ?? [];
-        $count = count($labels);
-        if ($count != $maxLength) {
+        $count = count($this->labels);
+        $fill = [];
+        if ($count < $maxLength) {
             $fill = array_fill(0, $maxLength - $count, "*");
-            $labels = array_merge($labels, $fill);
         }
-        return $labels;
+        return array_merge($this->labels, $fill);
     }
 
     protected function handleDimensions(): array
@@ -28,7 +23,7 @@ abstract class BaseChartWidget extends BaseWidget
         $maxLength = maxCount($this->dimensions);
         $attributes = [];
         $keys = array_keys($this->dimensions);
-        for ($i = 1; $i < count($keys); $i++) {
+        for ($i = 0; $i < count($keys); $i++) {
             $key = $keys[$i];
             $dimension = $this->dimensions[$key];
             $count = count($dimension);

@@ -5,29 +5,32 @@ namespace Aldeebhasan\FastBi\Models\Widgets;
 class GeoMapWidget extends BaseWidget
 {
     protected $view = 'geo-map';
+    private $countries = [];
 
-    protected function handleLabels(): array
+    public function countries(array $val): self
     {
-        //handle labels
-        $labels = $this->dimensions[array_keys($this->dimensions)[0]] ?? [];
-        $labels = array_map(fn($x) => strtoupper($x), $labels);
-        return $labels;
+        $this->countries = $val;
+        return $this;
     }
 
     protected function handleDimensions(): array
     {
+        if (empty($this->countries)) return [];
         $labels = $this->handleLabels();
         $attributes = [];
         $keys = array_keys($this->dimensions);
 
-        for ($i = 1; $i < count($keys); $i++) {
+        for ($i = 0; $i < count($keys); $i++) {
             $key = $keys[$i];
             $dimension = $this->dimensions[$key];
 
+            $label = $labels[$i] ?? ucfirst($key);
+            $label = ($label == '*') ? ucfirst($key) : $label;
             foreach ($dimension as $idx => $value) {
-                $attributes[ucfirst($key)][] = [
+                if (!isset($this->countries[$idx])) break;
+                $attributes[$label][] = [
                     "value" => $value,
-                    "code" => $labels[$idx]
+                    "code" => $this->countries[$idx]
                 ];;
             }
         }
