@@ -12,6 +12,7 @@ class BaseWidget extends BaseModel implements IUWidget
     protected $labels = [];
     protected $dimensions = [];
     protected $metrics = [];
+    protected $settings = [];
     protected $name = '';
     protected $key = '';
     protected $view = '';
@@ -25,6 +26,12 @@ class BaseWidget extends BaseModel implements IUWidget
     public function labels(array $labels): IUWidget
     {
         $this->labels = $labels;
+        return $this;
+    }
+
+    public function settings(array $settings): IUWidget
+    {
+        $this->settings = $settings;
         return $this;
     }
 
@@ -97,9 +104,9 @@ class BaseWidget extends BaseModel implements IUWidget
         return $this->dimensions;
     }
 
-    protected function handleOptions(): array
+    protected function handleSettings(): array
     {
-        return [];
+        return $this->settings;
     }
 
     protected function prepare()
@@ -107,7 +114,7 @@ class BaseWidget extends BaseModel implements IUWidget
         $labels = $this->handleLabels();
         $attributes = $this->handleDimensions();
         $statistics = $this->handleMetrics();
-        $options = $this->handleOptions();
+        $options = $this->handleSettings();
         return compact('labels', 'attributes', 'statistics', 'options');
     }
 

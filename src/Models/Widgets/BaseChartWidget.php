@@ -37,10 +37,10 @@ abstract class BaseChartWidget extends BaseWidget
         return $attributes;
     }
 
-    protected function handleOptions(): array
+    protected function handleSettings(): array
     {
         return [
-            'responsive' => true,
+            'responsive' => $this->settings['responsive'] ?? true,
         ];
     }
 

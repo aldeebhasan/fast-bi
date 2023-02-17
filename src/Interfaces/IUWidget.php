@@ -11,5 +11,9 @@ interface IUWidget
 
     public function metrics(array $metrics): IUWidget;
 
+    public function labels(array $labels): IUWidget;
+
+    public function settings(array $settings): IUWidget;
+
     public function render();
 }
