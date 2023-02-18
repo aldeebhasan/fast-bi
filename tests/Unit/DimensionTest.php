@@ -25,7 +25,7 @@ class DimensionTest extends TestCase
     public function testCustomMetric()
     {
         $metric = Dimensions::raw('name', [1, 2, 3, 4])
-            ->setTransformer(fn ($data) => array_map(fn ($x) => $x - 1, $data))
+            ->setTransformer(fn ($x) => $x - 1)
             ->build();
         $result = $metric->getData();
         self::assertEquals($result, [0, 1, 2, 3]);

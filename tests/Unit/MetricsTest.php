@@ -44,6 +44,13 @@ class MetricsTest extends TestCase
         self::assertEquals($result, 5.5);
     }
 
+    public function testCountMetric()
+    {
+        $metric = Metrics::count('name', $this->data);
+        $result = $metric->build()->getData();
+        self::assertEquals($result, 10);
+    }
+
     public function testnotExistMetric()
     {
         $metric = Metrics::notFound('name', $this->data);
@@ -53,7 +60,7 @@ class MetricsTest extends TestCase
 
     public function testCustomMetric()
     {
-        $metric = Metrics::raw('name', $this->data)->setMeasure(fn ($data) => count($data))->build();
+        $metric = Metrics::raw('name', $this->data)->setMeasure(fn($data) => count($data))->build();
         $result = $metric->getData();
         self::assertEquals($result, count($this->data));
     }

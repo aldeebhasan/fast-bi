@@ -6,10 +6,11 @@ class StringDimension extends BaseDimension
 {
     public function transform($data)
     {
-        return array_map([$this, 'itemTransform'], $data);
+        $this->setTransformer(\Closure::fromCallable([$this, 'itemTransform']));
+        return parent::transform($data);
     }
 
-    private function itemTransform($item)
+    private function itemTransform($item): string
     {
         return (string)$item;
     }

@@ -19,7 +19,7 @@ class BaseDimension extends BaseModel implements IUDimension
     public function __construct(string $name, $data)
     {
         $this->name = $name;
-        $this->data = $data;
+        $this->data = (array)$data;
         $this->processedData = $data;
     }
 
@@ -33,7 +33,7 @@ class BaseDimension extends BaseModel implements IUDimension
     public function transform($data)
     {
         if ($this->transformer && is_callable($this->transformer)) {
-            $data = call_user_func($this->transformer, $data);
+            $data = array_map(fn($item) => call_user_func($this->transformer, $item), $data);
         }
         return $data;
     }

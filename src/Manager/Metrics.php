@@ -4,6 +4,7 @@ namespace Aldeebhasan\FastBi\Manager;
 
 use Aldeebhasan\FastBi\Models\Metrics\AvgMetric;
 use Aldeebhasan\FastBi\Models\Metrics\BaseMetric;
+use Aldeebhasan\FastBi\Models\Metrics\CountMetric;
 use Aldeebhasan\FastBi\Models\Metrics\MaxMetric;
 use Aldeebhasan\FastBi\Models\Metrics\MedianMetric;
 use Aldeebhasan\FastBi\Models\Metrics\MinMetric;
@@ -15,6 +16,7 @@ use Aldeebhasan\FastBi\Models\Metrics\SumMetric;
  * @method static MinMetric min(string $name, array $data)
  * @method static MedianMetric median(string $name, array $data)
  * @method static AvgMetric avg(string $name, array $data)
+ * @method static CountMetric count(string $name, array $data)
  * @method static BaseMetric raw(string $name, array $data)
  */
 class Metrics

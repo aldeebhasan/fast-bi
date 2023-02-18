@@ -6,7 +6,7 @@ class DateTimeDimension extends BaseDimension
 {
     private $format = 'Y/m/d';
 
-    public function format(string $format)
+    public function format(string $format): self
     {
         $this->format = $format;
         return $this;
@@ -14,10 +14,11 @@ class DateTimeDimension extends BaseDimension
 
     public function transform($data)
     {
-        return array_map([$this, 'itemTransform'], $data);
+        $this->setTransformer(\Closure::fromCallable([$this, 'itemTransform']));
+        return parent::transform($data);
     }
 
-    private function itemTransform($item)
+    private function itemTransform($item): string
     {
         if (is_string($item)) {
             $date = date_create($item);

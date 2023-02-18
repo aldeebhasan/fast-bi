@@ -17,7 +17,7 @@ include_once 'includes/styles.php';
                         <span class="value"><?= $labels[$i] ?></span>
                     </div>
                     <div class="bar">
-                    <div class="bar-inner progress-bar-animated" style="width:<?= $attributes[$i] ?>%">
+                    <div class="bar-inner progress-bar-animated" style="width:<?= max(min($attributes[$i],100),0) ?>%">
                         <div class="progress"></div>
                     </div>
                     </div>

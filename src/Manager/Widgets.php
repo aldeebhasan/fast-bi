@@ -5,6 +5,7 @@ namespace Aldeebhasan\FastBi\Manager;
 use Aldeebhasan\FastBi\Models\Metrics\BaseMetric;
 use Aldeebhasan\FastBi\Models\Widgets\BarChartWidget;
 use Aldeebhasan\FastBi\Models\Widgets\BubbleChartWidget;
+use Aldeebhasan\FastBi\Models\Widgets\DoughnutChartWidget;
 use Aldeebhasan\FastBi\Models\Widgets\GeoMapWidget;
 use Aldeebhasan\FastBi\Models\Widgets\NumberWidget;
 use Aldeebhasan\FastBi\Models\Widgets\PieChartWidget;
@@ -26,6 +27,7 @@ use Aldeebhasan\FastBi\Models\Widgets\TableWidget;
  * @method static ScatterChartWidget scatterChart(string $name)
  * @method static BubbleChartWidget bubbleChart(string $name)
  * @method static PieChartWidget pieChart(string $name)
+ * @method static DoughnutChartWidget doughnutChart(string $name)
  * @method static BaseMetric raw(string $name)
  */
 class Widgets
