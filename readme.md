@@ -1,6 +1,5 @@
 ## Fast-Bi
 
-------------
 
 Fast-Bi is a light weight Business Intelligence dashboard manager for all php projects.
 
