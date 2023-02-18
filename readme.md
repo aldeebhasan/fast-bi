@@ -130,15 +130,27 @@ Widgets::table('users')
             Dimensions::number('ids',[1,2,3]),
             'names'=>['Ali', 'Hasan', 'Mohammad'],
             'mobile'=>Dimensions::string('mob',["+01252**","+01252**","+01252**"]),
+        ])->render()
+//with metrics
+Widgets::table('users')
+        ->labels(['ID', 'Name', 'mobile'])
+        ->dimensions([
+            Dimensions::number('ids',[1,2,3]),
+            'names'=>['Ali', 'Hasan', 'Mohammad'],
+            'mobile'=>Dimensions::string('mob',["+01252**","+01252**","+01252**"]),
         ])->metrics([
             Metrics::count('total',[1,2,4]),
             'average'=>Metrics::avg('avg',[1,2,4])
         ])->render()
 ```
+| Default | With metrics
+| ------------- | ------------- |
+| ![Table Widgets](./snapshots/table.png )| ![Table Widgets Metrics](./snapshots/table-metrics.png )   |
 
-![Table Widgets](./snapshots/table.png )
 
-#### `BarChart Widgets`
+
+
+#### `Bar Chart Widgets`
 
 ```php
 use Aldeebhasan\FastBi\Manager\{Metrics,Dimensions,Widgets};
@@ -174,11 +186,20 @@ Widgets::barChart('profits')
 | ------------- | ------------- |
 | ![Table Widgets](./snapshots/bar-chart.png ) | ![Table Widgets](./snapshots/bar-chart-h.png )   |
 
-#### `LineChart Widgets`
+#### `Line Chart Widgets`
 
 ```php
 use Aldeebhasan\FastBi\Manager\{Metrics,Dimensions,Widgets};
 
+Widgets::lineChart('profits')
+        ->labels(['2016', '2017', '2018'])
+        ->dimensions([
+            Dimensions::number('pos-invoices',[100,200,300]),
+            'store-invoices'=>[150,110,250],
+            Dimensions::number('extra',[10,20,30]),
+        ])->render()
+
+//with metrics
 Widgets::lineChart('profits')
         ->labels(['2016', '2017', '2018'])
         ->dimensions([
@@ -190,11 +211,15 @@ Widgets::lineChart('profits')
             'max-income'=>Metrics::max('avg',[100,200,300]),
             'min-income'=>Metrics::min('avg',[100,200,300])
         ])->render()
+
 ```
+| Default | With metrics
+| ------------- | ------------- |
+| ![Line chart Widgets](./snapshots/line-chart.png )| ![Line chart Widgets Metric](./snapshots/line-chart-metric.png )   |
 
-![Table Widgets](./snapshots/line-chart.png )
 
-#### `pieChart Widgets`
+
+#### `Pie Chart Widgets`
 
 ```php
 use Aldeebhasan\FastBi\Manager\{Metrics,Dimensions,Widgets};
@@ -214,11 +239,11 @@ Widgets::pieChart('profits')
         ])->render()
 ```
 
-| Overall  | For Pos |
+| Single Dimension | Multi Dimensions
 | ------------- | ------------- |
-| ![Pie Widgets](./snapshots/pie-chart.png ) | ![Pie Widgets Single](./snapshots/pie-chart-single.png )   |
+| ![Pie Widgets](./snapshots/pie-chart-single.png ) | ![Pie Widgets Single](./snapshots/pie-chart.png )   |
 
-#### `pieChart Widgets`
+#### `Doughnut Chart Widgets`
 
 ```php
 use Aldeebhasan\FastBi\Manager\{Metrics,Dimensions,Widgets};
@@ -238,11 +263,11 @@ Widgets::doughnutChart('profits')
         ])->render()
 ```
 
-| Overall  | For Pos |
+| Single Dimension | Multi Dimensions
 | ------------- | ------------- |
-| ![Doughnut Widgets](./snapshots/doughnut-chart.png ) | ![Doughnut Widgets Single](./snapshots/doughnut-chart-single.png )   |
+| ![Doughnut Widgets](./snapshots/doughnut-chart-single.png ) | ![Doughnut Widgets Single](./snapshots/doughnut-chart.png )   |
 
-#### `scatterChart Widgets` & `bubbleChart Widgets`
+#### `Scatter Chart Widgets` & `Bubble Chart Widgets`
 
 These two chart are very similar to each other. The main difference is that the bubble chart will have a different
 radius for each data point.
@@ -278,7 +303,7 @@ Widgets::bubbleChart('bubbles profits')
 | ------------- | ------------- |
 | ![Scatter Widgets](./snapshots/scatter-chart.png ) | ![Bubble Widgets](./snapshots/bubble-chart.png )   |
 
-#### `polarAreaChart Widgets`
+#### `Polar Area Chart Widgets`
 
 ```php
 use Aldeebhasan\FastBi\Manager\{Metrics,Dimensions,Widgets};
@@ -303,7 +328,7 @@ Widgets::polarAreaChart('polar profits (multi)')
 | ------------- | ------------- 
 | ![Polar Widgets](./snapshots/polar-chart.png ) | ![Polar Widgets Multi](./snapshots/polar-chart-multi.png )
 
-#### `radarChart Widgets`
+#### `Radar Chart Widgets`
 
 ```php
 use Aldeebhasan\FastBi\Manager\{Metrics,Dimensions,Widgets};
@@ -328,7 +353,7 @@ Widgets::radarChart('radar profits (multi)')
 | ------------- | ------------- 
 | ![Polar Widgets](./snapshots/radar-chart.png ) | ![Polar Widgets Multi](./snapshots/radar-chart-multi.png )
 
-#### `number Widgets`
+#### `Number Widgets`
 
 This widget is used to represent some statistic related to your dashboard.
 
@@ -352,9 +377,9 @@ Widgets::number('incomes')
 
 | Single        | Multi
 | ------------- | ------------- 
-| ![Polar Widgets](./snapshots/number-2.png ) | ![Polar Widgets Multi](./snapshots/number.png )
+| ![Number Widgets](./snapshots/number-2.png ) | ![Number Widgets Multi](./snapshots/number.png )
 
-#### `progressBar Widgets`
+#### `ProgressBar Widgets`
 
 This widget is used to represent some statistic related to your dashboard.
 <b>For this widget, you should specify numbers in term of percentage (max is 100 and min 0)</b>
@@ -379,9 +404,9 @@ Widgets::progressBar('incomes')
 
 | Single        | Multi
 | ------------- | ------------- 
-| ![Polar Widgets](./snapshots/progress-bar.png ) | ![Polar Widgets Multi](./snapshots/progress-bar-2.png )
+| ![ProgressBar Widgets](./snapshots/progress-bar.png ) | ![ProgressBar Widgets Multi](./snapshots/progress-bar-2.png )
 
-#### `geoMap Widgets`
+#### `Geo Map Widgets`
 
 For this widget you need to specify the countries you want to show the statistics on. You can define the country using
 the iso2 code.
@@ -392,15 +417,23 @@ use Aldeebhasan\FastBi\Manager\{Metrics,Dimensions,Widgets};
 //single dimension
  Widgets::geoMap('map')
         ->countries(['US','CA','FR','CN'])
+        ->dimensions([
+            Dimensions::number('population',['150','200','300','400']),
+            'area'=>['1500','2000','3000','6000'],
+        ])->render()
+//custom names
+ Widgets::geoMap('map')
+        ->countries(['US','CA','FR','CN'])
          ->labels(['Population','Square Area'])
         ->dimensions([
             Dimensions::number('population',['150','200','300','400']),
             'area'=>['1500','2000','3000','6000'],
         ])->render()
-
 ```
 
-![Polar Widgets](./snapshots/geo-map.png )  
+| Default        | Customized
+| ------------- | ------------- 
+| ![ProgressBar Widgets](./snapshots/geo-map-2.png ) | ![ProgressBar Widgets Multi](./snapshots/geo-map.png )
 
 
 
